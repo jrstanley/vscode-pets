@@ -10,6 +10,10 @@ import {
     WebviewMessage,
 } from '../common/types';
 
+// const vscode = require('vscode');
+
+// const ColourThemeKind = vscode.ColorThemeKind;
+
 const EXTRA_PETS_KEY = 'vscode-pets.extra-pets';
 const EXTRA_PETS_KEY_TYPES = EXTRA_PETS_KEY + '.types';
 const EXTRA_PETS_KEY_COLORS = EXTRA_PETS_KEY + '.colors';

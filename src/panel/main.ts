@@ -24,6 +24,8 @@ import {
     States,
 } from './states';
 
+const _vscode = require('vscode');
+
 /* This is how the VS Code API can be invoked from the panel */
 declare global {
     interface VscodeStateApi {
@@ -36,7 +38,18 @@ declare global {
     }
 }
 
+console.log('here');
+console.log(typeof self);
+console.log(self);
+// console.log(window);
+// console.log(typeof window);
+// const vscode: any = self;
+// (typeof window !== 'undefined') ? window.acquireVsCodeApi() : self;
+declare var acquireVsCodeApi: any;
+const window: Window = _vscode.window;
 const vscode = window.acquireVsCodeApi();
+// const vscode = require('vscode');
+console.log('here2');
 
 export var allPets: IPetCollection = new PetCollection();
 var petCounter: number;
@@ -192,7 +205,7 @@ function recoverState(basePetUri: string, petSize: PetSize, floor: number) {
     }
 
     var recoveryMap: Map<IPetType, PetElementState> = new Map();
-    state.petStates!.forEach((p) => {
+    state.petStates!.forEach((p: any) => {
         // Fixes a bug related to duck animations
         if ((p.petType as string) === 'rubber duck') {
             (p.petType as string) = 'rubber-duck';
